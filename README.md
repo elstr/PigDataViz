@@ -30,7 +30,7 @@ The chart should have these features:
 
 
 ### Pending:
-[ ] When url har year param, calculate the progress percent and render progress bar from there
+[ ] (FIX) When url has year param, calculate the progress percent and render progress bar from there
 
 [ ] Make progress bar responsive
 
