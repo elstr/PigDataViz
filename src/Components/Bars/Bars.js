@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {scaleLinear} from 'd3-scale'
-import {chartColors} from '../../config/constants'
+import {colors} from '../../config/constants'
 
 /* Bars are rendered completely by React and d3 is used for math */
 
@@ -9,7 +9,7 @@ export default class Bars extends Component {
     super(props)
     this.colorScale = scaleLinear()
       .domain([0, this.props.maxValue])
-      .range([chartColors.minValue, chartColors.maxValue])
+      .range([colors.light, colors.strong])
   }
 
   render() {

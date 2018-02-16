@@ -1,4 +1,5 @@
-export const chartColors = {
-  minValue: '#2196F3',
-  maxValue: '#1976D2'
+export const colors = {
+  light: '#2196F3',
+  strong: '#1976D2',
+  progress:'rgb(38, 126, 213)'
 }

@@ -5,7 +5,7 @@ import pigData from '../../wild-pig-data.json'
 import {scaleBand, scaleLinear} from 'd3-scale'
 import {getMinYear, getParamValue, getMaxYear, getYearsFromData, roundNumberWithTwoDecimals} from '../helper'
 import {Line} from 'rc-progress'
-import {chartColors} from '../../config/constants'
+import {colors} from '../../config/constants'
 import * as qs from 'query-string'
 
 import './style.css'
@@ -123,7 +123,7 @@ class Chart extends Component {
         <div>
           <PlayPause className="btn-play" text={!isPaused ? 'Pause' : 'Play'} onClick={this.handlePlayPauseClick}/>
           <div className="progress-bar-container">
-            <Line percent={progress} strokeWidth="1.5" strokeColor={chartColors.maxValue} />
+            <Line percent={progress} strokeWidth="1.5" strokeColor={colors.progress} />
           </div>
         </div>
       </div>
