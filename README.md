@@ -15,7 +15,7 @@ The chart should have these features:
 * [ X ] Animation that steps through the data, displaying each year for 2 seconds
       before proceeding to the next year.
 
-* [ ] A progress bar that shows the currently displayed year's relationship to
+* [ X ] A progress bar that shows the currently displayed year's relationship to
       the other years in the dataset.
 
 * [ X ] A play/pause button which enables and disables the animation, pausing on
@@ -28,5 +28,10 @@ The chart should have these features:
 * [ X ] Renders nicely in the most current versions of Firefox, Edge, and Chrome,
       and look good on both desktop and mobile.
 
+
+### Pending:
+[ ] When url har year param, calculate the progress percent and render progress bar from there
+
+[ ] Make progress bar responsive
 
 
