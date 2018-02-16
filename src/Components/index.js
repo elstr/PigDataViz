@@ -1,0 +1,8 @@
+export {default as Chart} from './Chart/Chart'
+export {default as Axis} from './Axis/Axis'
+export {default as Axes} from './Axes/Axes'
+export {default as Bars} from './Bars/Bars'
+export {default as Footer} from './Footer/Footer'
+export {default as Header} from './Header/Header'
+export {default as Main} from './Main/Main'
+export {default as PlayPause} from './PlayPause/PlayPause'
