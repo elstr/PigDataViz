@@ -9,7 +9,7 @@ export default class Bars extends Component {
     super(props)
     this.colorScale = scaleLinear()
       .domain([0, this.props.maxValue])
-      .range(['#2196F3', '#1976D2'])
+      .range([chartColors.minValue, chartColors.maxValue])
   }
 
   render() {

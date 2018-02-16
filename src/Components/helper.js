@@ -7,3 +7,11 @@ export const validateYear = year => {
   /* If it's a valid year value, return it, otherwise get the minimum year from data */
   return yearParamValue ? yearParamValue : getMinYear(this.data)
 }
+export const getYearsFromData = data => {
+  return data.reduce((acc, val) => {
+    if(!acc) {acc = []}
+    acc.indexOf(val.year) === -1 && acc.push(val.year)
+    return acc
+  }, [])
+}
+export const roundNumberWithTwoDecimals = number => Math.round(number*100)/100

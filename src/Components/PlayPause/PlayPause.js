@@ -8,9 +8,7 @@ const PlayPause = props => {
     className
   } = props
   return (
-    <div>
-      <button className={className} onClick={onClick}>{text}</button>
-    </div>
+    <button className={className} onClick={onClick}>{text}</button>
   )
 }
 
