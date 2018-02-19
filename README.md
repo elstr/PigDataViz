@@ -4,7 +4,8 @@
 https://pigdataviz.herokuapp.com/
 
 
-**Objective:** Using [React](https://reactjs.org/), create an animated bar chart
+##Objective:
+Using [React](https://reactjs.org/), create an animated bar chart
 that shows the data over time.
 
 In the project directory, you'll find
@@ -33,7 +34,7 @@ The chart should have these features:
       and look good on both desktop and mobile.
 
 
-### Pending:
+## Pending:
 [ ] (FIX) When url has year param, calculate the progress percent and render progress bar from there
 
 [ ] Make progress bar responsive
