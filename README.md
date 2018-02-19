@@ -1,8 +1,10 @@
 # Hawaiian Pig Visualization
+This is a demo project on how to manage React + D3 for data visualization.
+While React does the render of SVG elements, D3 will do the heavy calculations.
+Enjoy!
 
 ## Online Demo:
 https://pigdataviz.herokuapp.com/
-
 
 ## Objective:
 Using [React](https://reactjs.org/), create an animated bar chart
