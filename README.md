@@ -4,7 +4,7 @@
 https://pigdataviz.herokuapp.com/
 
 
-##Objective:
+## Objective:
 Using [React](https://reactjs.org/), create an animated bar chart
 that shows the data over time.
 
