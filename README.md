@@ -1,5 +1,9 @@
 # Hawaiian Pig Visualization
 
+## Online Demo:
+https://pigdataviz.herokuapp.com/
+
+
 **Objective:** Using [React](https://reactjs.org/), create an animated bar chart
 that shows the data over time.
 
