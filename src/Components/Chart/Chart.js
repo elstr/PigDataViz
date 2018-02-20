@@ -35,16 +35,29 @@ class Chart extends Component {
     }
   }
 
+  calculateProgress(yearFrom) {
+    const {minYear, progress} = this.state
+    /* Need to use a correction value + 1
+    *  To solve 2001 - 2000 = 1 => 16,66% and should be 33,2%,
+    *  Minimum year should be minimum percent (the result of percentPerYear), 2000 should be 16,66% */
+    const value = yearFrom - minYear + 1
+    return value > 0 ? value * progress : progress
+  }
+
   componentWillMount() {
     const {minYear} = this.state
     const {paused, year} = qs.parse(this.props.location.search)
 
     const yearFrom = validateYear(year, minYear)
 
+    const progress = this.calculateProgress(yearFrom)
+
+    console.log(progress)
+
     /* Paused is a string. If paused is true, set Boolean value true, else set Boolean value false */
     const isPaused = paused ? getParamValue(paused) === 'true' : false
 
-    this.setState({yearFrom, isPaused})
+    this.setState({yearFrom, isPaused, progress})
   }
 
   componentDidMount() {
