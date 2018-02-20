@@ -52,8 +52,6 @@ class Chart extends Component {
 
     const progress = this.calculateProgress(yearFrom)
 
-    console.log(progress)
-
     /* Paused is a string. If paused is true, set Boolean value true, else set Boolean value false */
     const isPaused = paused ? getParamValue(paused) === 'true' : false
 
