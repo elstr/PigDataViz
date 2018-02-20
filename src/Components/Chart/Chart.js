@@ -3,7 +3,10 @@ import {Axes, Bars, PlayPause} from '../index'
 import ResponsiveWrapper from '../ResponsiveWrapper/ResponsiveWrapper'
 import pigData from '../../wild-pig-data.json'
 import {scaleBand, scaleLinear} from 'd3-scale'
-import {getMinYear, getParamValue, getMaxYear, getYearsFromData, roundNumberWithTwoDecimals} from '../helper'
+import {
+  getMinYear, getParamValue, getMaxYear, getYearsFromData, roundNumberWithTwoDecimals,
+  validateYear
+} from '../helper'
 import {Line} from 'rc-progress'
 import {colors} from '../../config/constants'
 import * as qs from 'query-string'
@@ -36,15 +39,11 @@ class Chart extends Component {
     const {minYear} = this.state
     const {paused, year} = qs.parse(this.props.location.search)
 
-    /* First check if year has been passed and is an integer */
-    const yearParamValue = parseInt(year && getParamValue(year))
-
-    /* If it's a valid year value and more or eq to the minimum year, assign it, otherwise assign minimum year from data */
-    /* This is to validate year=2 for example */
-    const yearFrom = yearParamValue && (yearParamValue >= minYear) ? yearParamValue : minYear
+    const yearFrom = validateYear(year, minYear)
 
     /* Paused is a string. If paused is true, set Boolean value true, else set Boolean value false */
     const isPaused = paused ? getParamValue(paused) === 'true' : false
+
     this.setState({yearFrom, isPaused})
   }
 
@@ -92,14 +91,11 @@ class Chart extends Component {
     // scaleBand type
     const xScale = this.xScale
     .padding(0.5)
-    // scaleBand domain should be an array of specific values
-    // in our case, we want to use movie titles
     .domain(data.map(d => d.island))
     .range([margins.left, svgDimensions.width - margins.right])
 
     // scaleLinear type
     const yScale = this.yScale
-    // scaleLinear domain required at least two values, min and max
     .domain([0, maxValue])
     .range([svgDimensions.height - margins.bottom, margins.top])
 
