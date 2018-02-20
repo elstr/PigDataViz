@@ -2,9 +2,7 @@ import React from 'react'
 import {Axis} from '../index'
 
 /* Main responsibility of the Axes component is to prepare correct props for each Axis. */
-const Axes = ({ scales, margins, svgDimensions }) => {
-  const { height, width } = svgDimensions
-
+const Axes = ({ scales, margins, svgDimensions: {height, width} }) => {
   const xProps = {
     orient: 'Bottom',
     scale: scales.xScale,
