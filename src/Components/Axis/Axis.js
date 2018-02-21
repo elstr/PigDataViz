@@ -22,12 +22,13 @@ export default class Axis extends Component {
   }
 
   renderAxis() {
-    const axisType = `axis${this.props.orient}`
+    const {orient, scale, tickSize} = this.props
+    const axisType = `axis${orient}`
     const axis = d3Axis[axisType]()
-    .scale(this.props.scale)
-    .tickSize(-this.props.tickSize)
-    .tickPadding([10])
-    .ticks([6])
+    .scale(scale)
+    .tickSize(-tickSize) /* w/o the negative tickSize it renders ticks out of the axis scale */
+    .tickPadding([10]) /* padding from the Y value to the chart Y line */
+    .ticks([6]) /* w/o ticks it shows all the values in the Y scale */
 
     d3Select(this.axisElement).call(axis)
   }

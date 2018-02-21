@@ -1,9 +1,9 @@
 export const getMinYear = data => Math.min(...data.map(d => d.year))
 export const getMaxYear = data => Math.max(...data.map(d => d.year))
-export const getParamValue = param => param.substring(param.indexOf("=") + 1).toString()
+
 export const validateYear = (year, minValidYear) => {
   /* First check if year has been passed and is an integer */
-  const yearParamValue = parseInt(year && getParamValue(year))
+  const yearParamValue = parseInt(year)
 
   /* If it's a valid year value and more or eq to the minimum valid year, return it
   * otherwise return minimum valid year

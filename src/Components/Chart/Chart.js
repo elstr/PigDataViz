@@ -3,10 +3,7 @@ import {Axes, Bars, PlayPause} from '../index'
 import ResponsiveWrapper from '../ResponsiveWrapper/ResponsiveWrapper'
 import pigData from '../../wild-pig-data.json'
 import {scaleBand, scaleLinear} from 'd3-scale'
-import {
-  getMinYear, getParamValue, getMaxYear, getYearsFromData, roundNumberWithTwoDecimals,
-  validateYear
-} from '../helper'
+import {getMinYear, getMaxYear, getYearsFromData, roundNumberWithTwoDecimals, validateYear} from '../helper'
 import {Line} from 'rc-progress'
 import {colors} from '../../config/constants'
 import * as qs from 'query-string'
@@ -26,9 +23,12 @@ class Chart extends Component {
     const howManyYears = getYearsFromData(this.data).length
     const percentPerYear = roundNumberWithTwoDecimals(100/howManyYears)
 
+    const minYear = getMinYear(this.data)
+    const maxYear = getMaxYear(this.data)
+
     this.state = {
-      maxYear: getMaxYear(this.data),
-      minYear: getMinYear(this.data),
+      maxYear,
+      minYear,
       noMoreData: false,
       progress: percentPerYear,
       percentPerYear
@@ -53,7 +53,7 @@ class Chart extends Component {
     const progress = this.calculateProgress(yearFrom)
 
     /* Paused is a string. If paused is true, set Boolean value true, else set Boolean value false */
-    const isPaused = paused ? getParamValue(paused) === 'true' : false
+    const isPaused = paused ? paused === 'true' : false
 
     this.setState({yearFrom, isPaused, progress})
   }
@@ -77,7 +77,6 @@ class Chart extends Component {
 
   startGraphic = () => graphicMovingInterval = setInterval(() => { this.moveGraphicOneYear() }, 2000)
 
-
   moveGraphicOneYear() {
     const {yearFrom, maxYear, progress, percentPerYear} = this.state
     if(yearFrom < maxYear) {
@@ -97,6 +96,7 @@ class Chart extends Component {
     const svgDimensions = { width: parentWidth, height: 500 }
 
     const filteredDataByYear = data.filter(f => f.year === yearFrom)
+    //const maxValue = Math.max(...data.map(d => d.pigPopulation)) + 1000
     const maxValue = Math.max(...filteredDataByYear.map(d => d.pigPopulation)) + 1000
 
     // scaleBand type
@@ -105,7 +105,7 @@ class Chart extends Component {
     .domain(data.map(d => d.island))
     .range([margins.left, svgDimensions.width - margins.right])
 
-    // scaleLinear type
+    // scaleLinear type - Range top to bottom
     const yScale = this.yScale
     .domain([0, maxValue])
     .range([svgDimensions.height - margins.bottom, margins.top])
